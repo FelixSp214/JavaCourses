@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>prv.felix</groupId>
-		<artifactId>javacoursers</artifactId>
+		<artifactId>javacourses</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>javacourses-backend</artifactId>
