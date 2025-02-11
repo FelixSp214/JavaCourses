@@ -1,0 +1,9 @@
+prv/felix/javacourses/enums/CourseType.class
+prv/felix/javacourses/utils/Guarding.class
+prv/felix/javacourses/enums/SortType.class
+prv/felix/javacourses/utils/CourseTypeConverter.class
+prv/felix/javacourses/utils/H2DataBaseConnection.class
+prv/felix/javacourses/entities/JavaCourse.class
+prv/felix/javacourses/enums/SearchType.class
+prv/felix/javacourses/rmi/IRmiService.class
+prv/felix/javacourses/enums/ExportType.class
