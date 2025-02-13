@@ -21,9 +21,9 @@ public class JavaCourse {
 		this.uuid = Guarding.ensureNotNull(uuid);
 		this.courseName = Guarding.ensureNotNull(courseName);
 		this.description = Guarding.ensureNotNull(description);
-		this.durationInHours = Guarding.ensureNotNull(durationInHours);
-		this.maxParticipants = Guarding.ensureNotNull(maxParticipants);
-		this.costInEuros = Guarding.ensureNotNull(costInEuros);
+		this.durationInHours = durationInHours;
+		this.maxParticipants = maxParticipants;
+		this.costInEuros = costInEuros;
 		this.courseTyp = Guarding.ensureNotNull(courseTyp);
 	}
 

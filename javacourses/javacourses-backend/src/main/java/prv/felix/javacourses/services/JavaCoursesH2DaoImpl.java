@@ -1,11 +1,13 @@
 package prv.felix.javacourses.services;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
-
+import java.nio.file.Path;
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.SearchType;
 import prv.felix.javacourses.enums.SortType;
+import prv.felix.javacourses.exporting.ExportCsv;
 import prv.felix.javacourses.interfaces.IExporting;
 import prv.felix.javacourses.interfaces.IImporting;
 import prv.felix.javacourses.interfaces.IJavaCourseDao;
@@ -58,9 +60,9 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 	}
 
 	@Override
-	public void exportCsv() {
-		// TODO Auto-generated method stub
-
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException {
+		ExportCsv csv = new ExportCsv();
+		csv.exportJavaCoursesToCsv(javaCourseList, path);
 	}
 
 	@Override
