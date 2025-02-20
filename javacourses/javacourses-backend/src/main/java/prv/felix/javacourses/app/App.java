@@ -1,6 +1,7 @@
 package prv.felix.javacourses.app;
 
 import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
 
 import prv.felix.javacourses.services.RmiService;
 
@@ -21,7 +22,7 @@ public class App {
 	public static void execute() {
 		try {
 			RmiService rmiService = new RmiService();
-			Naming.rebind("rmi://localhost:1099/RmiService", rmiService);
+			LocateRegistry.createRegistry(8080);
 			System.out.println("RmiService is running...");
 		} catch (Exception e) {
 			e.printStackTrace();
