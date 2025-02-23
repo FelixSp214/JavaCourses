@@ -15,7 +15,7 @@ public class H2DataBaseConnection {
 
     private static final String JDBC_URL = "jdbc:h2:~/JavaCourses";
     private static final String USER = "JavaCourses";
-    private static final String PASSWORD = "Passwort";
+    private static final String PASSWORD = "Password";
 
     public Connection getConnection() {
         Connection connection = null;
@@ -34,7 +34,7 @@ public class H2DataBaseConnection {
         return connection;
     }
     
-    public List<JavaCourse> executeSqlStatment(String sql) { // TODO Exception
+    public List<JavaCourse> executeSqlStatement(String sql) { // TODO Exception
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
@@ -44,10 +44,13 @@ public class H2DataBaseConnection {
             List<JavaCourse> javaCourses = new ArrayList<>();;
             while (resultSet.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    javaCourses.add(new JavaCourse(UUID.fromString(resultSet.getString(1)), resultSet.getString(2), 
-                    		resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5), 
-                    		resultSet.getDouble(5),
-                    		CourseTypeConverter.convertFromStringToCourseType(resultSet.getString(6))));
+                    javaCourses.add(new JavaCourse(UUID.fromString(resultSet.getString(1)),
+                            resultSet.getString(2),
+                    		resultSet.getString(3), resultSet.getInt(4),
+                            resultSet.getInt(5),
+                    		resultSet.getDouble(6),
+                    		Converter.convertFromStringToCourseType(resultSet.getString(7)),
+                            Converter.convertFromStringToDbState(resultSet.getString(8))));
                 }
             }
             return javaCourses;

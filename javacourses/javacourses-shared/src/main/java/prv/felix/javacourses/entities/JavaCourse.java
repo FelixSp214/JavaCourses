@@ -4,10 +4,11 @@ import java.util.Objects;
 import java.util.UUID;
 
 import prv.felix.javacourses.enums.CourseType;
+import prv.felix.javacourses.enums.DBState;
 import prv.felix.javacourses.utils.Guarding;
 
 public class JavaCourse {
-	
+
 	private UUID uuid;
 	private String courseName;
 	private String description;
@@ -15,9 +16,10 @@ public class JavaCourse {
 	private int maxParticipants;
 	private double costInEuros;
 	private CourseType courseTyp;
-	
+	private DBState dbState;
+
 	public JavaCourse(UUID uuid, String courseName, String description, int durationInHours, int maxParticipants,
-			double costInEuros, CourseType courseTyp) {
+					  double costInEuros, CourseType courseTyp, DBState dbState) {
 		this.uuid = Guarding.ensureNotNull(uuid);
 		this.courseName = Guarding.ensureNotNull(courseName);
 		this.description = Guarding.ensureNotNull(description);
@@ -25,6 +27,7 @@ public class JavaCourse {
 		this.maxParticipants = maxParticipants;
 		this.costInEuros = costInEuros;
 		this.courseTyp = Guarding.ensureNotNull(courseTyp);
+		this.dbState = Guarding.ensureNotNull(dbState);
 	}
 
 	public UUID getUuid() {
@@ -82,32 +85,39 @@ public class JavaCourse {
 	public void setCourseTyp(CourseType courseTyp) {
 		this.courseTyp = courseTyp;
 	}
-	
+
+	public DBState getDbState() {
+		return dbState;
+	}
+
+	public void setDbState(DBState dbState) {
+		this.dbState = dbState;
+	}
+
 	@Override
-	public String toString() {
-		return "JavaCourse [uuid=" + uuid + ", courseName=" + courseName + ", description=" + description
-				+ ", durationInHours=" + durationInHours + ", maxParticipants=" + maxParticipants + ", costInEuros="
-				+ costInEuros + ", courseTyp=" + courseTyp + "]";
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass()) return false;
+		JavaCourse that = (JavaCourse) o;
+		return durationInHours == that.durationInHours && maxParticipants == that.maxParticipants && Double.compare(costInEuros, that.costInEuros) == 0 && Objects.equals(uuid, that.uuid) && Objects.equals(courseName, that.courseName) && Objects.equals(description, that.description) && courseTyp == that.courseTyp && dbState == that.dbState;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(costInEuros, courseName, courseTyp, description, durationInHours, maxParticipants, uuid);
+		return Objects.hash(uuid, courseName, description, durationInHours, maxParticipants, costInEuros, courseTyp, dbState);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		JavaCourse other = (JavaCourse) obj;
-		return costInEuros == other.costInEuros && Objects.equals(courseName, other.courseName)
-				&& courseTyp == other.courseTyp && Objects.equals(description, other.description)
-				&& durationInHours == other.durationInHours && maxParticipants == other.maxParticipants
-				&& Objects.equals(uuid, other.uuid);
+	public String toString() {
+		return "JavaCourse{" +
+				"uuid=" + uuid +
+				", courseName='" + courseName + '\'' +
+				", description='" + description + '\'' +
+				", durationInHours=" + durationInHours +
+				", maxParticipants=" + maxParticipants +
+				", costInEuros=" + costInEuros +
+				", courseTyp=" + courseTyp +
+				", dbState=" + dbState +
+				'}';
 	}
-	
+
 }

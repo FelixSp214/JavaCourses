@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.UUID;
 import java.nio.file.Path;
 import prv.felix.javacourses.entities.JavaCourse;
-import prv.felix.javacourses.enums.SearchType;
-import prv.felix.javacourses.enums.SortType;
+import prv.felix.javacourses.enums.*;
 import prv.felix.javacourses.exporting.ExportCsv;
 import prv.felix.javacourses.interfaces.IExporting;
 import prv.felix.javacourses.interfaces.IImporting;
@@ -17,17 +16,21 @@ import prv.felix.javacourses.utils.H2DataBaseConnection;
 public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExporting {
 
 	H2DataBaseConnection connection = new H2DataBaseConnection();
+	private static final String DB_TABLE = "JAVACOURSES";
 
 	@Override
 	public List<JavaCourse> getAllJavaCourses() {
-		String sql = "SELECT * FROM JAVACOURSES";
-		return connection.executeSqlStatment(sql);
+		String sql = "SELECT * FROM " + DB_TABLE;
+		return connection.executeSqlStatement(sql);
 	}
 
 	@Override
-	public List<JavaCourse> getAllSortedJavaCourses(SortType sort) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sort) {
+		Guarding.ensureNotNull(sort);
+		Guarding.ensureNotNull(columns);
+
+		String sql = "SELECT * FROM " + DB_TABLE + " ORDER BY " + columns + " " + sort;
+		return connection.executeSqlStatement(sql);
 	}
 
 	@Override
@@ -35,8 +38,8 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 		Guarding.ensureNotNull(search);
 		Guarding.ensureNotNull(where);
 
-		String sql = "SELECT * FROM JAVACOURSES WHERE " + search + " = " + where;
-		return connection.executeSqlStatment(sql);
+		String sql = "SELECT * FROM " + DB_TABLE + " WHERE " + search + " = " + where;
+		return connection.executeSqlStatement(sql);
 	}
 
 	@Override
@@ -52,11 +55,13 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 	}
 
 	@Override
-	public void deleteJavaCourse(UUID uuid) {
-		Guarding.ensureNotNull(uuid);
+	public void deleteJavaCourse(JavaCourse javaCourse) {
+		Guarding.ensureNotNull(javaCourse);
+		javaCourse.setDbState(DBState.DELETED);
 
-		String sql = "DELETE FROM JAVACOURSES WHERE id = " + uuid;
-		connection.executeSqlStatment(sql);
+		String sql = "DELETE FROM JAVACOURSES WHERE id = " + javaCourse;
+		String sqlTwo = ""; // TODO insert into deleted DB
+		connection.executeSqlStatement(sql);
 	}
 
 	@Override
@@ -66,14 +71,12 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 	}
 
 	@Override
-	public void exportPdf() {
-		// TODO Auto-generated method stub
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path) {
 
 	}
 
 	@Override
-	public void exportXml() {
-		// TODO Auto-generated method stub
+	public void exportXml(List<JavaCourse> javaCourseList, Path path) {
 
 	}
 

@@ -4,27 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum SortType {
+	ASCENDING("ASC"),
+	DESCENDING("DESC");
 
-	BY_UUID(""), BY_NAME(""), BY_DURATION(""), BY_MAXPARTICIPANTS(""), BY_COST(""), BY_COURSETYPE("");
-
-	private static final Map<String, SortType> SORT = new HashMap<>();
+	private static final Map<String, SortType> BY_COURSE_TYPE = new HashMap<>();
 
 	static {
 		for (SortType e : values()) {
-			SORT.put(e.search, e);
+			BY_COURSE_TYPE.put(e.coursesType, e);
 		}
 	}
+	public final String coursesType;
 
-	public final String search;
-	private static final String ASCENDING = "ASC"; // TODO extra enum
-	private static final String DESCENDING = "DESC";
-
-	private SortType(String exportType) {
-		this.search = exportType;
+	private SortType(String coursesType) {
+		this.coursesType = coursesType;
 	}
 
-	public static SortType getSearchCriteria(String label) {
-		return SORT.get(label);
+	public static SortType getSortType(String label) {
+		return BY_COURSE_TYPE.get(label);
 	}
-
 }

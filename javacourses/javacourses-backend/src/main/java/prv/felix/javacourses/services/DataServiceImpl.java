@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import prv.felix.javacourses.entities.JavaCourse;
+import prv.felix.javacourses.enums.Columns_JavaCourses;
 import prv.felix.javacourses.enums.SearchType;
 import prv.felix.javacourses.enums.SortType;
 import prv.felix.javacourses.interfaces.IDataService;
@@ -11,7 +12,7 @@ import prv.felix.javacourses.interfaces.IJavaCourseDao;
 
 public class DataServiceImpl implements IDataService {
 
-	private IJavaCourseDao javaCourseDao;
+	private final IJavaCourseDao javaCourseDao;
 
 	public DataServiceImpl(IJavaCourseDao javaCourseDao) {
 		this.javaCourseDao = javaCourseDao;
@@ -23,8 +24,8 @@ public class DataServiceImpl implements IDataService {
 	}
 
 	@Override
-	public List<JavaCourse> getAllSortedJavaCourses(SortType sort) {
-		return javaCourseDao.getAllSortedJavaCourses(sort);
+	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sort) {
+		return javaCourseDao.getAllSortedJavaCourses(columns, sort);
 	}
 
 	@Override
@@ -43,8 +44,8 @@ public class DataServiceImpl implements IDataService {
 	}
 
 	@Override
-	public void deleteJavaCourse(UUID uuid) {
-		javaCourseDao.deleteJavaCourse(uuid);
+	public void deleteJavaCourse(JavaCourse javaCourse) {
+		javaCourseDao.deleteJavaCourse(javaCourse);
 	}
 
 }
