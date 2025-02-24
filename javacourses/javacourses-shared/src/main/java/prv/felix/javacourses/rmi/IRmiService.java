@@ -3,14 +3,17 @@ package prv.felix.javacourses.rmi;
 import java.util.List;
 
 import prv.felix.javacourses.entities.JavaCourse;
+import prv.felix.javacourses.enums.Columns_JavaCourses;
+import prv.felix.javacourses.enums.SearchType;
+import prv.felix.javacourses.enums.SortType;
 
 public interface IRmiService {
 
 	public List<JavaCourse> getAllJavaCourses();
 
-	public List<JavaCourse> getAllSortedJavaCourses();
+    List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType);
 
-	public List<JavaCourse> getAllSearchedJavaCourses();
+	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where);
 
 	public void createJavaCourse();
 

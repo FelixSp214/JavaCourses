@@ -1,0 +1,11 @@
+#Maven Build#
+/javacourses/javacourses-backend/target/
+/javacourses/javacourses-client/target/
+/javacourses/javacourses-shared/target/
+
+#Intellij#
+.idea
+out
+
+#Git#
+.gitignore

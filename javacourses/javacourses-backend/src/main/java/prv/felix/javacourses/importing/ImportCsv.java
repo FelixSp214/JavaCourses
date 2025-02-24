@@ -2,6 +2,7 @@ package prv.felix.javacourses.importing;
 
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.CourseType;
+import prv.felix.javacourses.enums.DBState;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -27,7 +28,7 @@ public class ImportCsv {
         String[] parts = line.split(",");
         return new JavaCourse(UUID.fromString(parts[0]), parts[1], parts[2],
                 Integer.parseInt(parts[3]), Integer.parseInt(parts[4]),
-                Double.parseDouble(parts[5]), CourseType.valueOf(parts[6]));
+                Double.parseDouble(parts[5]), CourseType.valueOf(parts[6]), DBState.valueOf(parts[7]));
     }
 
 }

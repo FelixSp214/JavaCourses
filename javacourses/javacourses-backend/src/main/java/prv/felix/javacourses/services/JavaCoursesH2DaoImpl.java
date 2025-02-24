@@ -59,7 +59,7 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 		Guarding.ensureNotNull(javaCourse);
 		javaCourse.setDbState(DBState.DELETED);
 
-		String sql = "DELETE FROM JAVACOURSES WHERE id = " + javaCourse;
+		String sql = "DELETE FROM JAVACOURSES WHERE id = " + javaCourse.getUuid();
 		String sqlTwo = ""; // TODO insert into deleted DB
 		connection.executeSqlStatement(sql);
 	}
