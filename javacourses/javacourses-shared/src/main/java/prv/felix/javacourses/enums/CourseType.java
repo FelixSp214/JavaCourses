@@ -5,7 +5,7 @@ import java.util.Map;
 
 public enum CourseType {
 
-    TASTER_COURSE("Taster Courses"),
+    TASTER_COURSE("Taster Course"),
     BEGINNER("Beginner"),
     ADVANCED("Advanced"),
     EXPERT("Expert");

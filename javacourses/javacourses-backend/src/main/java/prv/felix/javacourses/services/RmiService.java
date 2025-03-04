@@ -12,29 +12,39 @@ import prv.felix.javacourses.enums.SortType;
 import prv.felix.javacourses.interfaces.IDataService;
 import prv.felix.javacourses.rmi.IRmiService;
 
-public class RmiService extends UnicastRemoteObject implements IRmiService {
+public class RmiService implements IRmiService {
 
-	@Serial
-	private static final long serialVersionUID = 1L;
-	private IDataService dataService;
+	private final IDataService dataService;
 
-	public RmiService() throws RemoteException {
-		super();
+	public RmiService(IDataService dataService) {
+		this.dataService = dataService;
 	}
 
 	@Override
 	public List<JavaCourse> getAllJavaCourses() {
-		return dataService.getAllJavaCourses();
+		try {
+			return dataService.getAllJavaCourses();
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) {
-		return dataService.getAllSortedJavaCourses(columns, sortType);
+		try {
+			return dataService.getAllSortedJavaCourses(columns, sortType);
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) {
-		return dataService.getAllSearchedJavaCourses(searchType, where);
+		try {
+			return dataService.getAllSearchedJavaCourses(searchType, where);
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override

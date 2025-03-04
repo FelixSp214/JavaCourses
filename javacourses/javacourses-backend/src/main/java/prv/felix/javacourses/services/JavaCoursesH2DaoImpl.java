@@ -2,7 +2,6 @@ package prv.felix.javacourses.services;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 import java.nio.file.Path;
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.*;
@@ -14,6 +13,16 @@ import prv.felix.javacourses.utils.Guarding;
 import prv.felix.javacourses.utils.H2DataBaseConnection;
 
 public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExporting {
+
+	private String dbUrl;
+	private String userName;
+	private String password;
+
+	public JavaCoursesH2DaoImpl(String dbUrl, String userName, String password) {
+		this.dbUrl = dbUrl;
+		this.userName = userName;
+		this.password = password;
+	}
 
 	H2DataBaseConnection connection = new H2DataBaseConnection();
 	private static final String DB_TABLE = "JAVACOURSES";

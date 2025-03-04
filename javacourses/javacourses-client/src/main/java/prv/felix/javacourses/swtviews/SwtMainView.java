@@ -5,9 +5,11 @@ import prv.felix.javacourses.interfaces.IClient;
 public class SwtMainView implements IClient {
 
 	private Controller controller;
+	private SwtDetailView detailView;
 
-	public SwtMainView(Controller controller) {
+	public SwtMainView(Controller controller, SwtDetailView detailView) {
 		this.controller = controller;
+		this.detailView = detailView;
 	}
 
 	@Override

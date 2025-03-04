@@ -1,5 +1,6 @@
 package prv.felix.javacourses.rmi;
 
+import java.rmi.Remote;
 import java.util.List;
 
 import prv.felix.javacourses.entities.JavaCourse;
@@ -7,7 +8,7 @@ import prv.felix.javacourses.enums.Columns_JavaCourses;
 import prv.felix.javacourses.enums.SearchType;
 import prv.felix.javacourses.enums.SortType;
 
-public interface IRmiService {
+public interface IRmiService extends Remote {
 
 	public List<JavaCourse> getAllJavaCourses();
 
