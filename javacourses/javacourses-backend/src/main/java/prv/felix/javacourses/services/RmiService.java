@@ -1,6 +1,8 @@
 package prv.felix.javacourses.services;
 
+import java.io.IOException;
 import java.io.Serial;
+import java.nio.file.Path;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
@@ -60,9 +62,34 @@ public class RmiService implements IRmiService {
 	}
 
 	@Override
-	public void deleteJavaCourse() {
+	public void deleteJavaCourse(JavaCourse javaCourse) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException {
+
+	}
+
+	@Override
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path) {
+
+	}
+
+	@Override
+	public void exportXml(List<JavaCourse> javaCourseList, Path path) {
+
+	}
+
+	@Override
+	public List<JavaCourse> importCsv() {
+		return List.of();
+	}
+
+	@Override
+	public List<JavaCourse> importXml() {
+		return List.of();
 	}
 
 }

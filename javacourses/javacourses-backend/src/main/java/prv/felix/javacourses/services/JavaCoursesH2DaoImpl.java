@@ -6,13 +6,14 @@ import java.nio.file.Path;
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.*;
 import prv.felix.javacourses.exporting.ExportCsv;
-import prv.felix.javacourses.interfaces.IExporting;
-import prv.felix.javacourses.interfaces.IImporting;
 import prv.felix.javacourses.interfaces.IJavaCourseDao;
 import prv.felix.javacourses.utils.Guarding;
 import prv.felix.javacourses.utils.H2DataBaseConnection;
 
-public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExporting {
+public class JavaCoursesH2DaoImpl implements IJavaCourseDao {
+
+	private final H2DataBaseConnection connection = new H2DataBaseConnection();
+	private static final String DB_TABLE = "JAVACOURSES";
 
 	private String dbUrl;
 	private String userName;
@@ -23,9 +24,6 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, IImporting, IExport
 		this.userName = userName;
 		this.password = password;
 	}
-
-	H2DataBaseConnection connection = new H2DataBaseConnection();
-	private static final String DB_TABLE = "JAVACOURSES";
 
 	@Override
 	public List<JavaCourse> getAllJavaCourses() {

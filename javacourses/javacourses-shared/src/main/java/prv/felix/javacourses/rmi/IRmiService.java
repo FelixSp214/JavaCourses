@@ -1,5 +1,7 @@
 package prv.felix.javacourses.rmi;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.rmi.Remote;
 import java.util.List;
 
@@ -20,6 +22,16 @@ public interface IRmiService extends Remote {
 
 	public void updateJavaCourse();
 
-	public void deleteJavaCourse();
+	public void deleteJavaCourse(JavaCourse javaCourse);
+
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException;
+
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path);
+
+	public void exportXml(List<JavaCourse> javaCourseList, Path path);
+
+	public List<JavaCourse> importCsv();
+
+	public List<JavaCourse> importXml();
 
 }

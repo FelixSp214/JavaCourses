@@ -1,5 +1,7 @@
 package prv.felix.javacourses.interfaces;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +14,23 @@ public interface IJavaCourseDao {
 
 	public List<JavaCourse> getAllJavaCourses();
 
-	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sort);
+	List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType);
 
-	public List<JavaCourse> getAllSearchedJavaCourses(SearchType search, String where);
+	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where);
 
 	public void createJavaCourse();
 
 	public void updateJavaCourse();
 
 	public void deleteJavaCourse(JavaCourse javaCourse);
+
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException;
+
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path);
+
+	public void exportXml(List<JavaCourse> javaCourseList, Path path);
+
+	public List<JavaCourse> importCsv();
+
+	public List<JavaCourse> importXml();
 }

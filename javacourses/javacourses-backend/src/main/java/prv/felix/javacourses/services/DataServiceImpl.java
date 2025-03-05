@@ -1,5 +1,7 @@
 package prv.felix.javacourses.services;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +48,31 @@ public class DataServiceImpl implements IDataService {
 	@Override
 	public void deleteJavaCourse(JavaCourse javaCourse) {
 		javaCourseDao.deleteJavaCourse(javaCourse);
+	}
+
+	@Override
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException {
+
+	}
+
+	@Override
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path) {
+
+	}
+
+	@Override
+	public void exportXml(List<JavaCourse> javaCourseList, Path path) {
+
+	}
+
+	@Override
+	public List<JavaCourse> importCsv() {
+		return List.of();
+	}
+
+	@Override
+	public List<JavaCourse> importXml() {
+		return List.of();
 	}
 
 }

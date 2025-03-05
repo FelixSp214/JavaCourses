@@ -6,6 +6,8 @@ import prv.felix.javacourses.enums.SearchType;
 import prv.felix.javacourses.enums.SortType;
 import prv.felix.javacourses.rmi.IRmiService;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 public class SwtController implements IRmiService {
@@ -42,8 +44,33 @@ public class SwtController implements IRmiService {
     }
 
     @Override
-    public void deleteJavaCourse() {
-        iRmiService.deleteJavaCourse();
+    public void deleteJavaCourse(JavaCourse javaCourse) {
+        iRmiService.deleteJavaCourse(javaCourse);
+    }
+
+    @Override
+    public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException {
+
+    }
+
+    @Override
+    public void exportPdf(List<JavaCourse> javaCourseList, Path path) {
+
+    }
+
+    @Override
+    public void exportXml(List<JavaCourse> javaCourseList, Path path) {
+
+    }
+
+    @Override
+    public List<JavaCourse> importCsv() {
+        return List.of();
+    }
+
+    @Override
+    public List<JavaCourse> importXml() {
+        return List.of();
     }
 
 }
