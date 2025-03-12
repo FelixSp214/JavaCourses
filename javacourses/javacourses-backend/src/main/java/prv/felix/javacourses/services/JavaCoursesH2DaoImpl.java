@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.rmi.Remote;
 import java.util.List;
 import java.nio.file.Path;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import prv.felix.javacourses.app.App;
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.*;
 import prv.felix.javacourses.exporting.ExportCsv;
@@ -15,6 +19,7 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, Remote {
 
 	private final H2DataBaseConnection connection = new H2DataBaseConnection();
 	private static final String DB_TABLE = "JAVACOURSES";
+	private static final Logger LOGGER = LogManager.getLogger(JavaCoursesH2DaoImpl.class);
 
 	private String dbUrl;
 	private String userName;

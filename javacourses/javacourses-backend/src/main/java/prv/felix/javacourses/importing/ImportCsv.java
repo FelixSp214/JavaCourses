@@ -8,20 +8,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-// Implementierung des Remote-Service
-public class ImportCsv extends UnicastRemoteObject {
-
-    public ImportCsv() throws RemoteException {
-        super(); // Notwendig für RMI-Objekte
-    }
+public class ImportCsv {
 
     public List<JavaCourse> importCoursesFromCsv(String filePath) throws RemoteException {
         Path path = Path.of(filePath);

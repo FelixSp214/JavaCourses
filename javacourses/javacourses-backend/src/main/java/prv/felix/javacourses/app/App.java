@@ -3,7 +3,6 @@ package prv.felix.javacourses.app;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import prv.felix.javacourses.rmi.IRmiService;
@@ -39,7 +38,7 @@ public class App {
             LOGGER.debug("Rmi service started...");
             System.out.println("Rmi service started...");
         } catch (Exception e) {
-            LOGGER.error(e);
+            LOGGER.error("Rmi service could not start..." , e.getLocalizedMessage());
         }
     }
 

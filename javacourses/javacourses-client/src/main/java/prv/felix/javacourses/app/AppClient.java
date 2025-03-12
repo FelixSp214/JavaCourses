@@ -1,5 +1,7 @@
 package prv.felix.javacourses.app;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import prv.felix.javacourses.controller.Controller;
 import prv.felix.javacourses.rmi.IRmiService;
 import prv.felix.javacourses.swtviews.SwtDetailView;
@@ -10,6 +12,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class AppClient {
+
+	private static final Logger LOGGER = LogManager.getLogger(AppClient.class);
 
 	public static void main(String[] args) throws RemoteException {
 		executeClient();
@@ -23,8 +27,10 @@ public class AppClient {
 			Controller controller = new Controller(rmi);
 			SwtMainView mainView = new SwtMainView(controller, new SwtDetailView());
 			mainView.show();
+			LOGGER.debug("Client started...");
+			System.out.println("Client started...");
 		} catch (Exception e) {
-			System.out.println("test");
+			LOGGER.error("Client could not start");
 		}
 
 	}
