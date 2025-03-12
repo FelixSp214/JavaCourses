@@ -1,6 +1,7 @@
 package prv.felix.javacourses.services;
 
 import java.io.IOException;
+import java.rmi.Remote;
 import java.util.List;
 import java.nio.file.Path;
 import prv.felix.javacourses.entities.JavaCourse;
@@ -10,7 +11,7 @@ import prv.felix.javacourses.interfaces.IJavaCourseDao;
 import prv.felix.javacourses.utils.Guarding;
 import prv.felix.javacourses.utils.H2DataBaseConnection;
 
-public class JavaCoursesH2DaoImpl implements IJavaCourseDao {
+public class JavaCoursesH2DaoImpl implements IJavaCourseDao, Remote {
 
 	private final H2DataBaseConnection connection = new H2DataBaseConnection();
 	private static final String DB_TABLE = "JAVACOURSES";

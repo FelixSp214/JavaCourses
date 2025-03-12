@@ -12,26 +12,26 @@ import prv.felix.javacourses.enums.SortType;
 
 public interface IRmiService extends Remote {
 
-	public List<JavaCourse> getAllJavaCourses();
+	public List<JavaCourse> getAllJavaCourses() throws Exception;
 
-    List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType);
+    List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) throws Exception;
 
-	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where);
+	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) throws Exception;
 
-	public void createJavaCourse();
+	public void createJavaCourse() throws Exception;
 
-	public void updateJavaCourse();
+	public void updateJavaCourse() throws Exception;
 
-	public void deleteJavaCourse(JavaCourse javaCourse);
+	public void deleteJavaCourse(JavaCourse javaCourse) throws Exception;
 
-	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException;
+	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws Exception;
 
-	public void exportPdf(List<JavaCourse> javaCourseList, Path path);
+	public void exportPdf(List<JavaCourse> javaCourseList, Path path) throws Exception;
 
-	public void exportXml(List<JavaCourse> javaCourseList, Path path);
+	public void exportXml(List<JavaCourse> javaCourseList, Path path) throws Exception;
 
-	public List<JavaCourse> importCsv();
+	public List<JavaCourse> importCsv() throws Exception;
 
-	public List<JavaCourse> importXml();
+	public List<JavaCourse> importXml() throws Exception;
 
 }

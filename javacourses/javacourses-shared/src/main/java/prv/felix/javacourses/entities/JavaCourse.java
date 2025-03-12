@@ -1,5 +1,7 @@
 package prv.felix.javacourses.entities;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -7,7 +9,10 @@ import prv.felix.javacourses.enums.CourseType;
 import prv.felix.javacourses.enums.DBState;
 import prv.felix.javacourses.utils.Guarding;
 
-public class JavaCourse {
+public class JavaCourse implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 1L;
 
 	private UUID uuid;
 	private String courseName;

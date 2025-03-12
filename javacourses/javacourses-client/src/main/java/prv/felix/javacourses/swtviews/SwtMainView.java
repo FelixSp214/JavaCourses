@@ -1,5 +1,6 @@
 package prv.felix.javacourses.swtviews;
 
+import prv.felix.javacourses.controller.Controller;
 import prv.felix.javacourses.interfaces.IClient;
 
 public class SwtMainView implements IClient {

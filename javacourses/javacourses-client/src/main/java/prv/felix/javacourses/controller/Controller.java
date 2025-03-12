@@ -10,41 +10,41 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-public class SwtController implements IRmiService {
+public class Controller implements IRmiService {
 
     private final IRmiService iRmiService;
 
-    public SwtController(IRmiService iRmiService) {
+    public Controller(IRmiService iRmiService) {
         this.iRmiService = iRmiService;
     }
 
     @Override
-    public List<JavaCourse> getAllJavaCourses() {
+    public List<JavaCourse> getAllJavaCourses() throws Exception {
         return iRmiService.getAllJavaCourses();
     }
 
     @Override
-    public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) {
+    public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) throws Exception {
         return iRmiService.getAllSortedJavaCourses(columns, sortType);
     }
 
     @Override
-    public List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) {
+    public List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) throws Exception {
         return iRmiService.getAllSearchedJavaCourses(searchType, where);
     }
 
     @Override
-    public void createJavaCourse() {
+    public void createJavaCourse() throws Exception {
         iRmiService.createJavaCourse();
     }
 
     @Override
-    public void updateJavaCourse() {
+    public void updateJavaCourse() throws Exception {
         iRmiService.updateJavaCourse();
     }
 
     @Override
-    public void deleteJavaCourse(JavaCourse javaCourse) {
+    public void deleteJavaCourse(JavaCourse javaCourse) throws Exception {
         iRmiService.deleteJavaCourse(javaCourse);
     }
 

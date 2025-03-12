@@ -3,6 +3,7 @@ package prv.felix.javacourses.services;
 import java.io.IOException;
 import java.io.Serial;
 import java.nio.file.Path;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
@@ -14,7 +15,7 @@ import prv.felix.javacourses.enums.SortType;
 import prv.felix.javacourses.interfaces.IDataService;
 import prv.felix.javacourses.rmi.IRmiService;
 
-public class RmiService implements IRmiService {
+public class RmiService implements IRmiService, Remote {
 
 	private final IDataService dataService;
 
@@ -35,7 +36,7 @@ public class RmiService implements IRmiService {
 	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) {
 		try {
 			return dataService.getAllSortedJavaCourses(columns, sortType);
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -51,45 +52,77 @@ public class RmiService implements IRmiService {
 
 	@Override
 	public void createJavaCourse() {
-		// TODO Auto-generated method stub
+		try {
+			dataService.createJavaCourse();
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 
 	}
 
 	@Override
 	public void updateJavaCourse() {
-		System.out.println("Test");
+		try {
+			dataService.updateJavaCourse();
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 
 	}
 
 	@Override
 	public void deleteJavaCourse(JavaCourse javaCourse) {
-		// TODO Auto-generated method stub
+		try {
+			dataService.deleteJavaCourse(javaCourse);
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 
 	}
 
 	@Override
 	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException {
-
+		try {
+			dataService.exportCsv(javaCourseList, path);
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public void exportPdf(List<JavaCourse> javaCourseList, Path path) {
-
+		try {
+			 dataService.exportPdf(javaCourseList, path);
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public void exportXml(List<JavaCourse> javaCourseList, Path path) {
-
+		try {
+            dataService.exportCsv(javaCourseList, path);
+        } catch (RuntimeException | IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public List<JavaCourse> importCsv() {
-		return List.of();
+		try {
+			return dataService.importCsv();
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public List<JavaCourse> importXml() {
-		return List.of();
+		try {
+			return dataService.importXml();
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

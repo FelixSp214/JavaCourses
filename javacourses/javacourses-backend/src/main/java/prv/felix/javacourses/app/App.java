@@ -37,6 +37,7 @@ public class App {
             Registry registry = LocateRegistry.createRegistry(8080);
             registry.bind("RmiService.server", iRmiService);
             LOGGER.debug("Rmi service started...");
+            System.out.println("Rmi service started...");
         } catch (Exception e) {
             LOGGER.error(e);
         }
