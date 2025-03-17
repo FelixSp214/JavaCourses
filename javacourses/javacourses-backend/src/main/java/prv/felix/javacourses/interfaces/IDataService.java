@@ -2,6 +2,7 @@ package prv.felix.javacourses.interfaces;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,15 +15,15 @@ public interface IDataService {
 
 	public List<JavaCourse> getAllJavaCourses();
 
-	List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType);
+	List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) throws SQLException;
 
-	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where);
+	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) throws SQLException;
 
-	public void createJavaCourse();
+	public void createJavaCourse(JavaCourse javaCourse);
 
-	public void updateJavaCourse();
+	public void updateJavaCourse(JavaCourse javaCourse);
 
-	public void deleteJavaCourse(JavaCourse javaCourse);
+	public void deleteJavaCourse(JavaCourse javaCourse) throws SQLException;
 
 	public void exportCsv(List<JavaCourse> javaCourseList, Path path) throws IOException;
 

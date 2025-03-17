@@ -2,6 +2,7 @@ package prv.felix.javacourses.services;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,27 +27,27 @@ public class DataServiceImpl implements IDataService {
 	}
 
 	@Override
-	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sort) {
+	public List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sort) throws SQLException {
 		return javaCourseDao.getAllSortedJavaCourses(columns, sort);
 	}
 
 	@Override
-	public List<JavaCourse> getAllSearchedJavaCourses(SearchType search, String where) {
+	public List<JavaCourse> getAllSearchedJavaCourses(SearchType search, String where) throws SQLException {
 		return javaCourseDao.getAllSearchedJavaCourses(search, where);
 	}
 
 	@Override
-	public void createJavaCourse() {
-		javaCourseDao.createJavaCourse();
+	public void createJavaCourse(JavaCourse javaCourse) {
+		javaCourseDao.createJavaCourse(javaCourse);
 	}
 
 	@Override
-	public void updateJavaCourse() {
-		javaCourseDao.updateJavaCourse();
+	public void updateJavaCourse(JavaCourse javaCourse) {
+		javaCourseDao.updateJavaCourse(javaCourse);
 	}
 
 	@Override
-	public void deleteJavaCourse(JavaCourse javaCourse) {
+	public void deleteJavaCourse(JavaCourse javaCourse) throws SQLException {
 		javaCourseDao.deleteJavaCourse(javaCourse);
 	}
 

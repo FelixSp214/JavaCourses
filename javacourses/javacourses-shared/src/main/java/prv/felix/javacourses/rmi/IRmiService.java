@@ -18,9 +18,9 @@ public interface IRmiService extends Remote {
 
 	List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) throws Exception;
 
-	public void createJavaCourse() throws Exception;
+	public void createJavaCourse(JavaCourse javaCourse) throws Exception;
 
-	public void updateJavaCourse() throws Exception;
+	public void updateJavaCourse(JavaCourse javaCourse) throws Exception;
 
 	public void deleteJavaCourse(JavaCourse javaCourse) throws Exception;
 

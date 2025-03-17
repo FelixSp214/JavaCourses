@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.List;
 
 import prv.felix.javacourses.entities.JavaCourse;
@@ -45,15 +46,15 @@ public class RmiService implements IRmiService, Remote {
 	public List<JavaCourse> getAllSearchedJavaCourses(SearchType searchType, String where) {
 		try {
 			return dataService.getAllSearchedJavaCourses(searchType, where);
-		} catch (RuntimeException e) {
+		} catch (RuntimeException | SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	@Override
-	public void createJavaCourse() {
+	public void createJavaCourse(JavaCourse javaCourse) {
 		try {
-			dataService.createJavaCourse();
+			dataService.createJavaCourse(javaCourse);
 		} catch (RuntimeException e) {
 			throw new RuntimeException(e);
 		}
@@ -61,9 +62,9 @@ public class RmiService implements IRmiService, Remote {
 	}
 
 	@Override
-	public void updateJavaCourse() {
+	public void updateJavaCourse(JavaCourse javaCourse) {
 		try {
-			dataService.updateJavaCourse();
+			dataService.updateJavaCourse(javaCourse);
 		} catch (RuntimeException e) {
 			throw new RuntimeException(e);
 		}
@@ -74,7 +75,7 @@ public class RmiService implements IRmiService, Remote {
 	public void deleteJavaCourse(JavaCourse javaCourse) {
 		try {
 			dataService.deleteJavaCourse(javaCourse);
-		} catch (RuntimeException e) {
+		} catch (RuntimeException | SQLException e) {
 			throw new RuntimeException(e);
 		}
 
