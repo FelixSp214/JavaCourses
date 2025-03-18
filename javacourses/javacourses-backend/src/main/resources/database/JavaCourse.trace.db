@@ -35,3 +35,29 @@ CREATE TABLE JavaCourse (
 	at org.h2.server.web.WebThread.process(WebThread.java:190)
 	at org.h2.server.web.WebThread.run(WebThread.java:103)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-03-18 10:47:24.700633+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "[*]NSERT INTO CourseType (type_id, type_name) VALUES ('TASTER_COURSE', 'Taster Course')"
+Syntax error in SQL statement "[*]NSERT INTO CourseType (type_id, type_name) VALUES ('TASTER_COURSE', 'Taster Course')"; SQL statement:
+NSERT INTO CourseType (type_id, type_name) VALUES ('TASTER_COURSE', 'Taster Course') [42000-224]
+2025-03-18 10:49:58.982172+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "[*]NSERT INTO JavaCourse (\000d\000a    uuid, \000d\000a    name, \000d\000a    description, \000d\000a    duration_in_hours, \000d\000a    max_participants, \000d\000a    cost_in_euros, \000d\000a    course_type, \000d\000a    dbState\000d\000a) VALUES (\000d\000a    '123e4567-e89b-12d3-a456-426614174000', \000d\000a    'Java für Anfänger', \000d\000a    'Ein Einführungskurs für Java-Einsteiger.', \000d\000a    40, \000d\000a    20, \000d\000a    299.99, \000d\000a    'BEGINNER',  -- Diese ID muss in der Tabelle CourseType existieren\000d\000a    'ACTIVE'     -- Diese ID muss in der Tabelle DBState existieren\000d\000a)"
+Syntax error in SQL statement "[*]NSERT INTO JavaCourse (\000d\000a    uuid, \000d\000a    name, \000d\000a    description, \000d\000a    duration_in_hours, \000d\000a    max_participants, \000d\000a    cost_in_euros, \000d\000a    course_type, \000d\000a    dbState\000d\000a) VALUES (\000d\000a    '123e4567-e89b-12d3-a456-426614174000', \000d\000a    'Java für Anfänger', \000d\000a    'Ein Einführungskurs für Java-Einsteiger.', \000d\000a    40, \000d\000a    20, \000d\000a    299.99, \000d\000a    'BEGINNER',  -- Diese ID muss in der Tabelle CourseType existieren\000d\000a    'ACTIVE'     -- Diese ID muss in der Tabelle DBState existieren\000d\000a)"; SQL statement:
+NSERT INTO JavaCourse (
+    uuid, 
+    name, 
+    description, 
+    duration_in_hours, 
+    max_participants, 
+    cost_in_euros, 
+    course_type, 
+    dbState
+) VALUES (
+    '123e4567-e89b-12d3-a456-426614174000', 
+    'Java für Anfänger', 
+    'Ein Einführungskurs für Java-Einsteiger.', 
+    40, 
+    20, 
+    299.99, 
+    'BEGINNER',  -- Diese ID muss in der Tabelle CourseType existieren
+    'ACTIVE'     -- Diese ID muss in der Tabelle DBState existieren
+) [42000-224]
