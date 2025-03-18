@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.UUID;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import prv.felix.javacourses.entities.JavaCourse;
 import prv.felix.javacourses.enums.Columns_JavaCourses;
 import prv.felix.javacourses.enums.SearchType;
@@ -16,13 +17,14 @@ import prv.felix.javacourses.interfaces.IJavaCourseDao;
 public class DataServiceImpl implements IDataService {
 
 	private final IJavaCourseDao javaCourseDao;
+	private static final Logger LOGGER = LogManager.getLogger(DataServiceImpl.class);
 
 	public DataServiceImpl(IJavaCourseDao javaCourseDao) {
 		this.javaCourseDao = javaCourseDao;
 	}
 
 	@Override
-	public List<JavaCourse> getAllJavaCourses() {
+	public List<JavaCourse> getAllJavaCourses() throws SQLException {
 		return javaCourseDao.getAllJavaCourses();
 	}
 

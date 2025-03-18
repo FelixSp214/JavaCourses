@@ -16,13 +16,13 @@ import java.util.stream.Stream;
 
 public class ImportCsv {
 
-    public List<JavaCourse> importCoursesFromCsv(String filePath) throws RemoteException {
+    public List<JavaCourse> importCoursesFromCsv(String filePath) throws IOException {
         Path path = Path.of(filePath);
         try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
             return lines.skip(1).map(this::parseJavaCourse)
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            throw new RemoteException("Fehler beim Importieren der CSV-Datei", e);
+            throw new IOException("Error while import From Csv", e);
         }
     }
 

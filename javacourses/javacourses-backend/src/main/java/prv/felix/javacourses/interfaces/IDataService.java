@@ -13,7 +13,7 @@ import prv.felix.javacourses.enums.SortType;
 
 public interface IDataService {
 
-	public List<JavaCourse> getAllJavaCourses();
+	public List<JavaCourse> getAllJavaCourses() throws SQLException;
 
 	List<JavaCourse> getAllSortedJavaCourses(Columns_JavaCourses columns, SortType sortType) throws SQLException;
 

@@ -34,13 +34,13 @@ public class Controller implements IRmiService {
     }
 
     @Override
-    public void createJavaCourse() throws Exception {
-        iRmiService.createJavaCourse();
+    public void createJavaCourse(JavaCourse javaCourse) throws Exception {
+        iRmiService.createJavaCourse(javaCourse);
     }
 
     @Override
-    public void updateJavaCourse() throws Exception {
-        iRmiService.updateJavaCourse();
+    public void updateJavaCourse(JavaCourse javaCourse) throws Exception {
+        iRmiService.updateJavaCourse(javaCourse);
     }
 
     @Override
