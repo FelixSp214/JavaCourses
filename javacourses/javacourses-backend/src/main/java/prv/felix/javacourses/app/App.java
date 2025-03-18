@@ -51,7 +51,7 @@ public class App {
 
     private static String[] loadProperties() throws IOException {
         Properties properties = new Properties();
-        try (InputStream input = App.class.getClassLoader().getResourceAsStream("conf/config.properties")) {
+        try (InputStream input = App.class.getClassLoader().getResourceAsStream("conf/application.properties")) {
             if (input == null) {
                 System.err.println("Datei 'conf/config.properties' nicht gefunden!");
                 throw new IOException();

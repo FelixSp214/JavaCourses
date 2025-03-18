@@ -83,10 +83,10 @@ public class SwtMainView implements IClient {
 
 	private void fillTable(List<JavaCourse> courses) {
 		//nur fürs testen
-		courses = new ArrayList<>();
-		courses.add(new JavaCourse(UUID.randomUUID(), "TestName", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
-		courses.add(new JavaCourse(UUID.randomUUID(), "a", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
-		courses.add(new JavaCourse(UUID.randomUUID(), "z", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		//courses = new ArrayList<>();
+		//courses.add(new JavaCourse(UUID.randomUUID(), "TestName", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		//courses.add(new JavaCourse(UUID.randomUUID(), "a", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		//courses.add(new JavaCourse(UUID.randomUUID(), "z", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
 		for(JavaCourse course : courses) {
 			TableItem item = new TableItem(table, SWT.NONE);
 			item.setText(new String[]{
