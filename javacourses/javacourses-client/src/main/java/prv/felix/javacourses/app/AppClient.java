@@ -2,6 +2,7 @@ package prv.felix.javacourses.app;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import prv.felix.javacourses.console.ConsoleUI;
 import prv.felix.javacourses.controller.Controller;
 import prv.felix.javacourses.rmi.IRmiService;
 import prv.felix.javacourses.swtviews.SwtMainView;
@@ -23,11 +24,11 @@ public class AppClient {
 			IRmiService rmi = (IRmiService) registry.lookup("RmiService.server");
 
 			Controller controller = new Controller(rmi);
-			SwtMainView mainView = new SwtMainView(controller);
+			ConsoleUI mainView = new ConsoleUI(controller);
 			LOGGER.debug("Client started...");
 			mainView.show();
 		} catch (Exception e) {
-			LOGGER.error("Client could not start " + e.getMessage());
+            LOGGER.error("Client could not start {}", e.getMessage());
 		}
 
 	}
