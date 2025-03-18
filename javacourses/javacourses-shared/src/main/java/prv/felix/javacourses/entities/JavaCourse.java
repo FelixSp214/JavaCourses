@@ -35,6 +35,8 @@ public class JavaCourse implements Serializable {
 		this.dbState = Guarding.ensureNotNull(dbState);
 	}
 
+	public JavaCourse() {}
+
 	public UUID getUuid() {
 		return uuid;
 	}
