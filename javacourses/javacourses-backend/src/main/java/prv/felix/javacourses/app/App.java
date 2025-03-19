@@ -40,12 +40,13 @@ public class App {
             RmiService rmiService = new RmiService(
                     new DataServiceImpl(new JavaCoursesH2DaoImpl(url, user, password)));
             IRmiService iRmiService = (IRmiService) UnicastRemoteObject.exportObject(rmiService, 0);
-            Registry registry = LocateRegistry.createRegistry(8080);
+            Registry registry = LocateRegistry.createRegistry(8181);
             registry.bind("RmiService.server", iRmiService);
             LOGGER.debug("Rmi service started...");
             System.out.println("Rmi service started...");
         } catch (Exception e) {
-            LOGGER.error("Rmi service could not start...", e.getLocalizedMessage());
+            LOGGER.error("Rmi service could not start...", e.getMessage());
+            e.printStackTrace();
         }
     }
 

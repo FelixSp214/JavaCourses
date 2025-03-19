@@ -29,6 +29,7 @@ public class RmiService implements IRmiService, Remote {
 		try {
 			return dataService.getAllJavaCourses();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}

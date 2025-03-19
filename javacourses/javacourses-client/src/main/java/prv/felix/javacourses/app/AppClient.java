@@ -20,7 +20,7 @@ public class AppClient {
 
 	public static void executeClient() {
 		try {
-			Registry registry = LocateRegistry.getRegistry(8080);
+			Registry registry = LocateRegistry.getRegistry(8181);
 			IRmiService rmi = (IRmiService) registry.lookup("RmiService.server");
 
 			Controller controller = new Controller(rmi);
