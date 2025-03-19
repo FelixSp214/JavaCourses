@@ -249,14 +249,16 @@ public class SwtMainView implements IClient {
 		importButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
+				SWTImportExportView importView = new SWTImportExportView(controller, display, true);
+				importView.show();
 			}
 		});
 
 		exportButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
+				SWTImportExportView exportView = new SWTImportExportView(controller, display, false);
+				exportView.show();
 			}
 		});
 	}
@@ -267,7 +269,7 @@ public class SwtMainView implements IClient {
 		tableData.grabExcessVerticalSpace = true;
 		tableData.horizontalAlignment = SWT.FILL;
 		tableData.verticalAlignment = SWT.FILL;
-		table = new Table(shell, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.FULL_SELECTION);
+		table = new Table(shell, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.FULL_SELECTION | SWT.MULTI);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		table.setLayoutData(tableData);

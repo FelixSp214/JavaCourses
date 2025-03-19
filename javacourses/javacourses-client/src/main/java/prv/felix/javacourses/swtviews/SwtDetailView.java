@@ -3,6 +3,7 @@ package prv.felix.javacourses.swtviews;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
@@ -55,6 +56,8 @@ public class SwtDetailView implements IClient {
 		layout.numColumns = 1;
 		detailShell.setLayout(layout);
 		detailShell.setSize(550,800);
+		Image java = new Image(display, SwtMainView.class.getClassLoader().getResourceAsStream("logo/java_logo.png"));
+		detailShell.setImage(java);
 
 		createDetailView(detailShell);
 

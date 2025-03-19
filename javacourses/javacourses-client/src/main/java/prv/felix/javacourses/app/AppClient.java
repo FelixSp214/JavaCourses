@@ -24,7 +24,7 @@ public class AppClient {
 			IRmiService rmi = (IRmiService) registry.lookup("RmiService.server");
 
 			Controller controller = new Controller(rmi);
-			ConsoleUI mainView = new ConsoleUI(controller);
+			SwtMainView mainView = new SwtMainView(controller);
 			LOGGER.debug("Client started...");
 			mainView.show();
 		} catch (Exception e) {
