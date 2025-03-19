@@ -67,7 +67,7 @@ public class H2DataBaseConnection {
             return javaCourses;
 
         } catch (SQLException e) {
-            throw new SQLException("Can not execute SQL Statement and can not get any javacourses");
+            throw new SQLException("Can not execute SQL Statement and can not get any javacourses " + e.getMessage());
         }
     }
 
