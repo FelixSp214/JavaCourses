@@ -1,10 +1,13 @@
 package prv.felix.javacourses.swtviews;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
@@ -74,19 +77,20 @@ public class SwtMainView implements IClient {
 		createButtonField(shell);
 		createTableField(shell);
 
-        try {
-            fillTable(controller.getAllJavaCourses());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+		try {
+			//fillTable(controller.getAllJavaCourses());
+			fillTable(null);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	private void fillTable(List<JavaCourse> courses) {
 		//nur fürs testen
-		//courses = new ArrayList<>();
-		//courses.add(new JavaCourse(UUID.randomUUID(), "TestName", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
-		//courses.add(new JavaCourse(UUID.randomUUID(), "a", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
-		//courses.add(new JavaCourse(UUID.randomUUID(), "z", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		courses = new ArrayList<>();
+		courses.add(new JavaCourse(UUID.randomUUID(), "TestName", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		courses.add(new JavaCourse(UUID.randomUUID(), "a", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
+		courses.add(new JavaCourse(UUID.randomUUID(), "z", "TestDesc", 1, 2, 3, CourseType.TASTER_COURSE, DBState.ACTIVE));
 		for(JavaCourse course : courses) {
 			TableItem item = new TableItem(table, SWT.NONE);
 			item.setText(new String[]{
@@ -220,15 +224,15 @@ public class SwtMainView implements IClient {
 							course.setCostInEuros(Double.parseDouble(item.getText(5)));
 							course.setCourseTyp(CourseType.getCourseType(item.getText(6)));
 							course.setDbState(DBState.getDBState(item.getText(7)));
-                            try {
-                                controller.deleteJavaCourse(course);
-                            } catch (Exception ex) {
-                                MessageBox errorBox = new MessageBox(shell, SWT.OK);
+							try {
+								controller.deleteJavaCourse(course);
+							} catch (Exception ex) {
+								MessageBox errorBox = new MessageBox(shell, SWT.OK);
 								errorBox.setText("Fehler beim Kurs löschen!");
 								errorBox.setMessage("Der Java-Kurs " + course.getCourseName() + " konnte nicht gelöscht werden!");
 								errorBox.open();
-                            }
-                        }
+							}
+						}
 					}
 				}
 			}
@@ -237,7 +241,8 @@ public class SwtMainView implements IClient {
 		newButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
+				SwtDetailView detailView = new SwtDetailView(display, controller);
+				detailView.show();
 			}
 		});
 
@@ -278,6 +283,26 @@ public class SwtMainView implements IClient {
 				}
 			});
 		}
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDoubleClick(MouseEvent e) {
+				Point point = new Point(e.x, e.y);
+				TableItem item = table.getItem(point);
+				if (item != null) {
+					JavaCourse course = new JavaCourse();
+					course.setUuid(UUID.fromString(item.getText(0)));
+					course.setCourseName(item.getText(1));
+					course.setDescription(item.getText(2));
+					course.setDurationInHours(Integer.parseInt(item.getText(3)));
+					course.setMaxParticipants(Integer.parseInt(item.getText(4)));
+					course.setCostInEuros(Double.parseDouble(item.getText(5)));
+					course.setCourseTyp(CourseType.getCourseType(item.getText(6)));
+					course.setDbState(DBState.getDBState(item.getText(7)));
+					SwtDetailView detailView = new SwtDetailView(display, controller, course);
+					detailView.show();
+				}
+			}
+		});
 	}
 
 	private static void sortTable(Table table, int columnIndex) {

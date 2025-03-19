@@ -34,7 +34,7 @@ public class JavaCoursesH2DaoImpl implements IJavaCourseDao, Remote {
                 "jc.max_participants, jc.cost_in_euros, ct.type_name AS course_type, " +
                 "ds.state_name AS db_state, ds.color AS db_state_color " +
                 "FROM JavaCourse jc " +
-                "JOIN CourseType ct ON jc.course_type = ct.type_id" +
+                "JOIN CourseType ct ON jc.course_type = ct.type_id " +
                 "JOIN DBState ds ON jc.dbState = ds.state_id;";
         return connection.executeGetSqlQuery(sql);
     }
