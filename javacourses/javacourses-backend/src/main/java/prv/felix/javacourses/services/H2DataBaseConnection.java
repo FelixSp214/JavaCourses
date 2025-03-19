@@ -39,7 +39,7 @@ public class H2DataBaseConnection {
             LOGGER.error("H2 Database Driver not found");
         } catch (SQLException e) {
             System.err.println("Failed to connect to H2 database.");
-            LOGGER.error("ailed to connect to H2 database");
+            LOGGER.error("Failed to connect to H2 database");
         }
         return connection;
     }
